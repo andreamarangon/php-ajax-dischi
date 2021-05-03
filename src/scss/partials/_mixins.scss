@@ -1,0 +1,10 @@
+@mixin container-center($width) {
+  width: $width;
+  margin: 0 auto;
+}
+
+@mixin clearfix {
+  clear: both;
+  content: '';
+  display: table;
+}
