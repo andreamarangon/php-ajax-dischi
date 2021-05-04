@@ -10,9 +10,40 @@
 Vue.config.devtools = true;
 var app = new Vue({
   el: '#root',
-  data: {},
-  computed: {},
-  methods: {}
+  data: {
+    disks: [],
+    genreFilter: '',
+    genreOptions: [],
+    orderDesc: true
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('http://localhost/php-ajax-dischi/music.php').then(function (result) {
+      _this.disks = result.data.response;
+
+      _this.disks.forEach(function (disk) {
+        if (!_this.genreOptions.includes(disk.genre)) {
+          _this.genreOptions.push(disk.genre);
+        }
+      });
+    });
+  },
+  methods: {
+    yearSort: function yearSort() {
+      this.orderDesc = !this.orderDesc;
+
+      if (this.orderDesc) {
+        this.disks.sort(function (a, b) {
+          return b.year - a.year;
+        });
+      } else {
+        this.disks.sort(function (a, b) {
+          return a.year - b.year;
+        });
+      }
+    }
+  }
 });
 
 /***/ }),

@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-include './_partials/data.php';
+include __dir__.'./_partials/data.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,6 +33,7 @@ include './_partials/data.php';
           <div class="flip-card-back">
             <h2><?php echo $key['title'] ?></h2>
             <p><?php echo $key['author'] ?></p>
+            <p><?php echo $key['genre'] ?></p>
             <p><?php echo $key['year'] ?></p>
           </div>
         </div>
@@ -48,6 +49,5 @@ include './_partials/data.php';
 
 
 
-  <!-- <script src="./dist/js/main.js" charset="utf-8"></script> -->
 </body>
 </html>
